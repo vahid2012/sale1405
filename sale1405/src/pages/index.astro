@@ -1,0 +1,433 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { IMAGES, SITE } from '../consts';
+import Phone from '../components/Phone.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const faqs = [
+  {
+    question: 'خرید ملک در ارومیه را از کجا شروع کنم؟',
+    answer:
+      'برای خرید ملک در ارومیه ابتدا بودجه و هدف خود را مشخص کنید، سپس محله‌های مناسب را شناسایی کنید. صفحه راهنمای خرید و فروش ملک در ارومیه ما را مطالعه کنید و در نهایت با مشاوران ما تماس بگیرید تا بهترین گزینه‌ها را به شما معرفی کنیم.',
+  },
+  {
+    question: 'آیا خرید خودرو لوکس در ارومیه سرمایه‌گذاری خوبی است؟',
+    answer:
+      'خرید خودرو لوکس در ارومیه بسته به مدل و وضعیت فنی می‌تواند سرمایه‌گذاری مناسبی باشد. مدل‌های محدود تولید و کلاسیک ارزش خود را بهتر حفظ می‌کنند. برای راهنمای کامل به صفحه خرید و فروش خودروهای لوکس در ارومیه مراجعه کنید.',
+  },
+  {
+    question: 'بهترین محله ارومیه برای سکونت کدام است؟',
+    answer:
+      'بهترین محله به سبک زندگی و بودجه شما بستگی دارد. شمال ارومیه برای آرامش و کیفیت، مرکز برای دسترسی به امکانات، و شهرک‌های جدید غرب و شرق برای فضای زندگی وسیع‌تر و پتانسیل رشد قیمت مناسب هستند.',
+  },
+  {
+    question: 'برای مشاوره تخصصی چگونه تماس بگیریم؟',
+    answer:
+      'می‌توانید از طریق تلفن، واتساپ یا تلگرام با شماره 0914 340 3431 تماس بگیرید. همچنین در اینستاگرام با آیدی akay.iran.travel با ما در ارتباط باشید. صفحه تماس برای اطلاعات بیشتر آماده است.',
+  },
+];
+
+const fa = new Intl.DateTimeFormat('fa-IR', { dateStyle: 'long' });
+---
+
+<Layout
+  title={`${SITE.name} — املاک و خودروهای لوکس در ارومیه`}
+  description={SITE.defaultDescription}
+  path="/"
+  image={IMAGES.urmiaCity.src}
+  faq={faqs}
+>
+  <section class="home-hero" style={`--bg: url('${IMAGES.urmiaCity.src}')`}>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="tag">مرجع تخصصی ارومیه</span>
+      <h1>خرید و فروش ملک و خودروهای لوکس در ارومیه</h1>
+      <p class="lead">
+        ساله ۱۴۰۵، راهنمای جامع شما برای ورود هوشمندانه به بازار املاک و خودروهای لوکس در
+        ارومیه. از شناخت محله‌ها و تحلیل قیمت‌ها تا چک‌لیست کامل معامله، در کنار شما هستیم.
+      </p>
+      <div class="hero-cta">
+        <a href="/real-estate-urmia" class="cta">راهنمای خرید ملک در ارومیه</a>
+        <a href="/luxury-cars-urmia" class="cta cta-secondary">راهنمای خرید خودرو لوکس</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">دو بازار، یک مرجع تخصصی</h2>
+      <p class="section-intro">
+        شهر ارومیه با دریاچه‌ای منحصربه‌فرد، کوه‌های سرسبز و بازار پویای املاک و خودرو، یکی از
+        جذاب‌ترین شهرهای شمال غرب ایران برای سکونت و سرمایه‌گذاری است. ما در ساله ۱۴۰۵ با تمرکز
+        روی دو حوزه کلیدی، راهنمای تخصصی و به‌روز را برای خریداران، فروشندگان و
+        سرمایه‌گذاران فراهم کرده‌ایم. در ادامه هر دو حوزه را معرفی می‌کنیم و شما را به صفحات
+        مرتبط ارجاع می‌دهیم.
+      </p>
+
+      <div class="cards triple">
+        <article class="card vertical">
+          <img src={IMAGES.apartment.src} alt={IMAGES.apartment.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">املاک ارومیه</span>
+            <h3>خرید و فروش ملک در ارومیه</h3>
+            <p>
+              راهنمای کامل بازار مسکن ارومیه شامل معرفی محله‌های شمال، مرکز، غرب و جنوب شهر،
+              تحلیل قیمت‌ها، نکات حقوقی معامله و فرصت‌های سرمایه‌گذاری بلندمدت.
+            </p>
+            <a href="/real-estate-urmia" class="card-link">مشاهده راهنمای املاک ارومیه</a>
+          </div>
+        </article>
+
+        <article class="card vertical">
+          <img src={IMAGES.mercedes.src} alt={IMAGES.mercedes.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">خودرو لوکس ارومیه</span>
+            <h3>خرید و فروش خودروهای لوکس در ارومیه</h3>
+            <p>
+              معرفی برندهای مرسدس بنز، بی‌ام‌و، پورشه و آودی، راهنمای بررسی فنی، فرایند انتقال
+              شماره، هزینه‌های نگهداری و نکات حقوقی معامله خودروهای وارداتی.
+            </p>
+            <a href="/luxury-cars-urmia" class="card-link">مشاهده راهنمای خودرو لوکس</a>
+          </div>
+        </article>
+
+        <article class="card vertical">
+          <img src={IMAGES.bmw.src} alt={IMAGES.bmw.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">منطقه آزاد ماکو</span>
+            <h3>خودروهای منطقه آزاد ماکو در ارومیه</h3>
+            <p>
+              راهنمای خرید خودرو از منطقه آزاد ماکو با معافیت گمرکی؛ تفاوت قیمت با بازار ملی،
+              مراحل خرید و نمایشگاه‌های معتبر در ارومیه.
+            </p>
+            <a href="/free-zone-maku-car-market-urmia" class="card-link">مشاهده راهنمای منطقه آزاد</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">خدمات تخصصی ما در ارومیه</h2>
+      <p class="section-intro">
+        علاوه بر راهنمای کلی بازار املاک و خودرو در ارومیه، خدمات تخصصی زیر را ارائه می‌دهیم.
+        هر کدام با تمرکز بر حوزه‌ای خاص، راهنمای کاملی برای شما فراهم می‌کند.
+      </p>
+
+      <div class="cards triple">
+        <article class="card vertical">
+          <img src={IMAGES.suvShowroom.src} alt={IMAGES.suvShowroom.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">نمایشگاه خودرو قلی پور</span>
+            <h3>خرید و فروش شاسی بلند و خودرو لوکس</h3>
+            <p>
+              نمایشگاه خودرو قلی پور در ارومیه؛ مرجع تخصصی خرید و فروش خودروهای شاسی بلند (SUV)
+              و خودروهای لوکس مرسدس، بی‌ام‌و، پورشه، رنج روور و آودی.
+            </p>
+            <a href="/qolipour-suv-dealership-urmia" class="card-link">مشاهده راهنمای نمایشگاه</a>
+          </div>
+        </article>
+
+        <article class="card vertical">
+          <img src={IMAGES.golshahrApt.src} alt={IMAGES.golshahrApt.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">مشاور املاک گلشهر</span>
+            <h3>خرید و فروش آپارتمان گلشهر یک و دو</h3>
+            <p>
+              مشاور املاک تخصصی گلشهر ارومیه برای خرید و فروش آپارتمان در شهرک گلشهر یک و دو؛
+              تحلیل قیمت، فرایند خرید و فرصت‌های سرمایه‌گذاری.
+            </p>
+            <a href="/golshehr-apartment-realtor-urmia" class="card-link">مشاهده راهنمای گلشهر</a>
+          </div>
+        </article>
+
+        <article class="card vertical">
+          <img src={IMAGES.rentalLiving.src} alt={IMAGES.rentalLiving.alt} loading="lazy" />
+          <div class="card-body">
+            <span class="tag">اجاره کوتاه‌مدت</span>
+            <h3>همکاری با مالکان — اجاره به مسافران</h3>
+            <p>
+              فرصت همکاری با مالکان املاک در ارومیه برای اجاره روزانه و هفتگی به مسافران و
+              گردشگران؛ افزایش درآمد ملک با مدیریت کامل و بازاریابی تخصصی.
+            </p>
+            <a href="/short-term-rental-cooperation-urmia" class="card-link">مشاهده راهنمای همکاری</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">چرا ساله ۱۴۰۵؟</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">۱</div>
+          <h3>تخصص محلی در ارومیه</h3>
+          <p>
+            ما به بازار ارومیه و آذربایجان غربی به صورت تخصصی می‌شناسیم. از محله‌های شمال آرام
+            تا شهرک‌های در حال توسعه غرب، اطلاعات دقیق و به‌روز را در اختیار شما قرار می‌دهیم.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">۲</div>
+          <h3>راهنمای کامل معامله</h3>
+          <p>
+            از تعیین بودجه و انتخاب محله یا مدل خودرو، تا بررسی فنی، نکات حقوقی و فرایند انتقال،
+            تمام مراحل معامله را به صورت گام‌به‌گام توضیح می‌دهیم.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">۳</div>
+          <h3>نگاه سرمایه‌گذاری</h3>
+          <p>
+            فراتر از یک معامله ساده، به شما کمک می‌کنیم تصمیماتی بگیرید که سرمایه شما را در
+            بلندمدت حفظ و رشد دهد. تحلیل بازار، روند قیمت‌ها و فرصت‌های نوظهور را پوشش می‌دهیم.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">۴</div>
+          <h3>مشاوره مستقیم</h3>
+          <p>
+            در هر مرحله از مسیر، با تماس تلفنی، واتساپ یا تلگرام می‌توانید با کارشناسان ما در
+            ارتباط باشید. شماره <Phone /> در دسترس شماست.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">آخرین مطالب وبلاگ</h2>
+      <p class="section-intro">
+        برای تصمیم‌گیری آگاهانه، مطالب زیر را مطالعه کنید. هر مقاله با تمرکز بر موضوعی خاص،
+        دیدی عمیق و کاربردی از بازار ارومیه ارائه می‌دهد.
+      </p>
+
+      <div class="cards">
+        {
+          posts.map((post) => (
+            <article class="card">
+              <a href={`/blog/${post.data.slug}`}>
+                <img src={post.data.heroImage} alt={post.data.heroAlt} loading="lazy" />
+              </a>
+              <div class="card-body">
+                <span class="tag">{fa.format(post.data.pubDate)}</span>
+                <h3>
+                  <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
+                </h3>
+                <p>{post.data.description}</p>
+                <a href={`/blog/${post.data.slug}`} class="card-link">ادامه مطلب</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="all-posts">
+        <a href="/blog" class="cta cta-secondary">مشاهده همه مطالب وبلاگ</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container cta-block">
+      <div class="cta-text">
+        <h2>آماده شروع هستید؟</h2>
+        <p>
+          چه به دنبال خرید خانه در بهترین محله‌های ارومیه باشید، چه قصد خرید خودرو لوکس داشته
+          باشید، کارشناسان ما آماده‌اند تا شما را در هر مرحله همراهی کنند. همین حالا تماس
+          بگیرید یا صفحه مورد نظر را بررسی کنید.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a href="/contact" class="cta">شروع مشاوره</a>
+        <a href={SITE.phoneTel} class="cta cta-secondary"><Phone /></a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .home-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: linear-gradient(180deg, rgba(11, 70, 65, 0.78), rgba(15, 23, 42, 0.82)), var(--bg);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 4rem 1.5rem;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.35) 100%);
+  }
+  .hero-content {
+    position: relative;
+    max-width: 780px;
+    z-index: 1;
+  }
+  .home-hero .tag {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .home-hero h1 {
+    color: #fff;
+    font-size: 2.8rem;
+    margin: 1rem 0 1.25rem;
+    text-shadow: 0 2px 18px rgba(0,0,0,0.4);
+    line-height: 1.25;
+  }
+  .home-hero .lead {
+    color: rgba(255,255,255,0.96);
+    font-size: 1.2rem;
+    line-height: 2;
+    max-width: 680px;
+    margin: 0 auto 2rem;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .home-hero .cta {
+    background: #fff;
+    color: var(--primary-dark);
+  }
+  .home-hero .cta:hover {
+    background: #f0fdfa;
+  }
+  .home-hero .cta-secondary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .home-hero .cta-secondary:hover {
+    background: var(--accent-light);
+  }
+
+  .section-title {
+    text-align: center;
+    font-size: 1.85rem;
+    margin: 0 0 1rem;
+  }
+  .section-intro {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 2.5rem;
+    color: var(--muted);
+    font-size: 1.05rem;
+  }
+  .cards.triple {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .card.vertical {
+    text-align: right;
+  }
+  .card.vertical .card-body h3 {
+    font-size: 1.35rem;
+  }
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+  }
+  .feature {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .feature:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    margin-bottom: 0.85rem;
+  }
+  .feature h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.15rem;
+  }
+  .feature p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.85;
+  }
+  .all-posts {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+  .cta-block {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .cta-text h2 {
+    margin: 0 0 0.5rem;
+  }
+  .cta-text p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.9;
+  }
+  .cta-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 1020px) {
+    .cards.triple {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 820px) {
+    .cards.triple {
+      grid-template-columns: 1fr;
+    }
+    .cta-block {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .cta-actions {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  @media (max-width: 720px) {
+    .home-hero {
+      min-height: 60vh;
+    }
+    .home-hero h1 {
+      font-size: 2rem;
+    }
+    .home-hero .lead {
+      font-size: 1.05rem;
+    }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { IMAGES } from '../../consts';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const fa = new Intl.DateTimeFormat('fa-IR', { dateStyle: 'long' });
+---
+
+<Layout
+  title="وبلاگ ساله ۱۴۰۵ — راهنمای املاک و خودرو لوکس ارومیه"
+  description="مقالات تخصصی درباره خرید و فروش ملک در ارومیه و خرید خودرو لوکس در ارومیه؛ تحلیل بازار، معرفی محله‌ها، راهنمای خرید و نکات سرمایه‌گذاری در سال ۱۴۰۵."
+  path="/blog"
+  image={IMAGES.livingRoom.src}
+  breadcrumbs={[{ name: 'وبلاگ', path: '/blog' }]}
+>
+  <section class="page-hero-simple">
+    <div class="container">
+      <span class="tag">وبلاگ</span>
+      <h1>وبلاگ ساله ۱۴۰۵</h1>
+      <p class="lead">
+        مقالات تخصصی درباره بازار املاک و خودروهای لوکس در ارومیه. تحلیل بازار، راهنمای خرید،
+        نکات حقوقی و چشم‌انداز سرمایه‌گذاری، همگی در یکجا.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="cards blog-cards">
+        {
+          posts.map((post) => (
+            <article class="card">
+              <a href={`/blog/${post.data.slug}`} class="card-img-link">
+                <img src={post.data.heroImage} alt={post.data.heroAlt} loading="lazy" />
+              </a>
+              <div class="card-body">
+                <span class="tag">{fa.format(post.data.pubDate)}</span>
+                <h3>
+                  <a href={`/blog/${post.data.slug}`}>{post.data.title}</a>
+                </h3>
+                <p>{post.data.description}</p>
+                <a href={`/blog/${post.data.slug}`} class="card-link">ادامه مطلب</a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero-simple {
+    background: linear-gradient(180deg, #ecfeff 0%, #f0fdfa 100%);
+    padding: 3.5rem 1.5rem 2.5rem;
+    text-align: center;
+  }
+  .page-hero-simple h1 {
+    margin: 0.5rem 0 1rem;
+    font-size: 2.2rem;
+  }
+  .page-hero-simple .lead {
+    color: var(--muted);
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+  }
+  .blog-cards {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
+  .card-img-link {
+    display: block;
+  }
+</style>

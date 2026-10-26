@@ -1,0 +1,153 @@
+---
+import { SITE, NAV_LINKS, FOOTER_REAL_ESTATE, FOOTER_CARS } from '../consts';
+import Phone from './Phone.astro';
+const year = new Intl.DateTimeFormat('fa-IR', { year: 'numeric' }).format(new Date());
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-col brand-col">
+      <a href="/" class="footer-brand">
+        <span class="brand-mark">۱۴۰۵</span>
+        <span>مرجع املاک و خودرو ارومیه</span>
+      </a>
+      <p>
+        مرجع تخصصی خرید و فروش ملک در ارومیه و خرید و فروش خودروهای لوکس در ارومیه. راهنمای
+        کامل بازار، محله‌ها و فرایند معامله در ارومیه و آذربایجان غربی.
+      </p>
+      <p class="addr">{SITE.address}</p>
+    </div>
+
+    <div class="footer-col">
+      <h2>صفحات</h2>
+      <ul>
+        {NAV_LINKS.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2>تماس</h2>
+      <ul>
+        <li><a href={SITE.phoneTel}>تلفن: <Phone /></a></li>
+        <li><a href={SITE.whatsapp} target="_blank" rel="noopener">واتساپ: <Phone /></a></li>
+        <li><a href={SITE.telegram} target="_blank" rel="noopener">تلگرام: <Phone /></a></li>
+        <li><a href={SITE.instagram} target="_blank" rel="noopener">اینستاگرام: {SITE.instagramHandle}</a></li>
+        <li>دامنه: {SITE.domain}</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2>املاک</h2>
+      <ul>
+        {FOOTER_REAL_ESTATE.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2>خودرو</h2>
+      <ul>
+        {FOOTER_CARS.map((l) => <li><a href={l.href}>{l.label}</a></li>)}
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h2>وبلاگ</h2>
+      <ul>
+        <li><a href="/blog/best-neighborhoods-urmia-home-buying">بهترین محله‌های ارومیه</a></li>
+        <li><a href="/blog/luxury-car-buying-guide-urmia">راهنمای خرید خودرو لوکس</a></li>
+        <li><a href="/blog/urmia-housing-market-1405">بازار مسکن ارومیه ۱۴۰۵</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© {year} {SITE.name}. تمامی حقوق محفوظ است.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: #0f172a;
+    color: #cbd5e1;
+    margin-top: 4rem;
+  }
+  .footer-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+  }
+  .brand-mark {
+    font-weight: 800;
+    background: linear-gradient(135deg, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .footer-col p {
+    color: #94a3b8;
+    line-height: 1.8;
+    font-size: 0.92rem;
+    margin: 0 0 0.5rem;
+  }
+  .addr {
+    color: #cbd5e1 !important;
+  }
+  .footer-col h2 {
+    color: #fff;
+    font-size: 1rem;
+    margin: 0 0 0.85rem;
+    font-weight: 700;
+  }
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-col li {
+    margin-bottom: 0.5rem;
+    font-size: 0.92rem;
+  }
+  .footer-col a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover {
+    color: #60a5fa;
+  }
+  .footer-bottom {
+    border-top: 1px solid #1e293b;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+  .footer-bottom p {
+    margin: 0;
+  }
+
+  @media (max-width: 860px) {
+    .footer-inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+  }
+  @media (max-width: 520px) {
+    .footer-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

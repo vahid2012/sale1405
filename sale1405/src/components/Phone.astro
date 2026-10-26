@@ -1,0 +1,14 @@
+---
+import { SITE } from '../consts';
+interface Props { label?: string }
+const { label } = Astro.props;
+---
+<span class="phone-num" dir="ltr">{label ?? SITE.phoneDisplay}</span>
+
+<style>
+  .phone-num {
+    unicode-bidi: embed;
+    direction: ltr;
+    display: inline-block;
+  }
+</style>

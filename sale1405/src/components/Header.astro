@@ -1,0 +1,144 @@
+---
+import { SITE, NAV_LINKS } from '../consts';
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isHome = current === '/';
+---
+
+<header class={`site-header ${isHome ? 'home' : ''}`}>
+  <div class="header-inner">
+    <a href="/" class="brand" aria-label={SITE.name}>
+      <span class="brand-mark">۱۴۰۵</span>
+      <span class="brand-text">مرجع املاک و خودرو ارومیه</span>
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden />
+    <label for="nav-toggle" class="nav-burger" aria-label="منو">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="main-nav" aria-label="ناوبری اصلی">
+      <ul>
+        {
+          NAV_LINKS.map((l) => {
+            const active = l.href === current;
+            return (
+              <li>
+                <a href={l.href} class={active ? 'active' : ''} aria-current={active ? 'page' : undefined}>
+                  {l.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .site-header.home {
+    background: rgba(255, 255, 255, 0.7);
+  }
+  .header-inner {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .brand-mark {
+    font-weight: 800;
+    font-size: 1.35rem;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .brand-text {
+    font-weight: 700;
+    font-size: 1.05rem;
+  }
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    margin: 0;
+    padding: 0;
+  }
+  .main-nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.4rem 0.25rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .main-nav a:hover {
+    color: var(--primary);
+  }
+  .main-nav a.active {
+    color: var(--primary);
+    border-bottom-color: var(--primary);
+  }
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+  .nav-burger span {
+    width: 26px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+  }
+
+  @media (max-width: 860px) {
+    .nav-burger {
+      display: flex;
+    }
+    .main-nav {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+    }
+    .nav-toggle:checked ~ .main-nav {
+      max-height: 420px;
+    }
+    .main-nav ul {
+      flex-direction: column;
+      gap: 0;
+      padding: 0.5rem 1.5rem 1rem;
+    }
+    .main-nav a {
+      display: block;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+  }
+</style>

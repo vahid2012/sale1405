@@ -1,0 +1,105 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import PageHero from '../../components/PageHero.astro';
+import { getCollection, render } from 'astro:content';
+import { IMAGES } from '../../consts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const fa = new Intl.DateTimeFormat('fa-IR', { dateStyle: 'long' });
+
+const allPosts = (await getCollection('blog')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+const others = allPosts.filter((p) => p.data.slug !== post.data.slug).slice(0, 2);
+---
+
+<Layout
+  title={`${post.data.title} — ساله ۱۴۰۵`}
+  description={post.data.description}
+  path={`/blog/${post.data.slug}`}
+  image={post.data.heroImage}
+  breadcrumbs={[
+    { name: 'وبلاگ', path: '/blog' },
+    { name: post.data.title, path: `/blog/${post.data.slug}` },
+  ]}
+>
+  <PageHero
+    image={{ src: post.data.heroImage, alt: post.data.heroAlt }}
+    tag="وبلاگ ساله ۱۴۰۵"
+    title={post.data.title}
+    lead={post.data.description}
+  />
+
+  <article class="prose">
+    <p class="post-meta">
+      <span>📅 {fa.format(post.data.pubDate)}</span>
+      {post.data.tags.length > 0 && (
+        <span class="post-tags">
+          {post.data.tags.map((t) => <span class="post-tag">#{t}</span>)}
+        </span>
+      )}
+    </p>
+    <Content />
+  </article>
+
+  <section class="related-section">
+    <div class="container">
+      <h2>مطالب مرتبط</h2>
+      <div class="cards">
+        {others.map((p) => (
+          <article class="card">
+            <a href={`/blog/${p.data.slug}`}>
+              <img src={p.data.heroImage} alt={p.data.heroAlt} loading="lazy" />
+            </a>
+            <div class="card-body">
+              <h3><a href={`/blog/${p.data.slug}`}>{p.data.title}</a></h3>
+              <p>{p.data.description}</p>
+              <a href={`/blog/${p.data.slug}`} class="card-link">ادامه مطلب</a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .post-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    color: var(--soft);
+    font-size: 0.92rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .post-tag {
+    color: var(--primary);
+    font-weight: 600;
+  }
+  .related-section {
+    padding: 3rem 1.5rem;
+    background: var(--surface-alt);
+    margin-top: 3rem;
+  }
+  .related-section h2 {
+    text-align: center;
+    margin: 0 0 2rem;
+  }
+</style>

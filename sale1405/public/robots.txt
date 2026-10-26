@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sale1405.ir/sitemap-index.xml

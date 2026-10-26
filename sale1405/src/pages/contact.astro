@@ -1,0 +1,276 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageHero from '../components/PageHero.astro';
+import { SITE, IMAGES } from '../consts';
+import Phone from '../components/Phone.astro';
+---
+
+<Layout
+  title="تماس با ساله ۱۴۰۵ — مشاوره املاک و خودرو لوکس ارومیه"
+  description="با ساله ۱۴۰۵ در ارومیه در تماس باشید. تلفن، واتساپ، تلگرام و اینستاگرام در دسترس شماست. برای مشاوره تخصصی خرید و فروش ملک و خودرو لوکس در ارومیه با ما تماس بگیرید."
+  path="/contact"
+  image={IMAGES.iranMosque.src}
+  breadcrumbs={[{ name: 'تماس', path: '/contact' }]}
+>
+  <PageHero
+    image={IMAGES.iranMosque}
+    tag="تماس با ما"
+    title="با ساله ۱۴۰۵ در تماس باشید"
+    lead="کارشناسان ما آماده پاسخگویی به سوالات شما درباره بازار املاک و خودرو لوکس ارومیه هستند."
+  />
+
+  <section class="contact-section">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <h2>راه‌های ارتباطی</h2>
+        <p>
+          ما در ساله ۱۴۰۵ همواره در دسترس شما هستیم. چه به دنبال مشاوره تخصصی برای خرید ملک
+          در ارومیه باشید، چه به دنبال راهنمایی برای خرید خودرو لوکس، کارشناسان ما آماده‌اند
+          تا در هر مرحله از مسیر همراه شما باشند. در ادامه راه‌های ارتباطی ما را معرفی
+          می‌کنیم.
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon phone" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M6.62 10.79a15.53 15.53 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.05-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.05l-2.2 2.17Z"/></svg>
+            </span>
+            <div>
+              <h3>تلفن تماس</h3>
+              <a href={SITE.phoneTel}><Phone /></a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon whatsapp" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.82 2.42a8.18 8.18 0 0 1 2.42 5.83c0 4.54-3.7 8.24-8.25 8.24a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24Z"/></svg>
+            </span>
+            <div>
+              <h3>واتساپ</h3>
+              <a href={SITE.whatsapp} target="_blank" rel="noopener"><Phone /></a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon telegram" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M21.94 4.6 18.7 20.04c-.24 1.08-.88 1.35-1.78.84l-4.92-3.63-2.37 2.28c-.26.26-.48.48-.99.48l.35-5 9.1-8.23c.4-.35-.08-.55-.62-.2L6.81 13.2l-4.86-1.52c-1.06-.33-1.08-1.06.22-1.57L20.55 3.04c.88-.33 1.65.2 1.39 1.56Z"/></svg>
+            </span>
+            <div>
+              <h3>تلگرام</h3>
+              <a href={SITE.telegram} target="_blank" rel="noopener"><Phone /></a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon instagram" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.07.05 1.8.22 2.43.47.66.26 1.22.6 1.77 1.16.56.55.9 1.11 1.16 1.77.25.64.42 1.36.47 2.43.05 1.07.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.07-.22 1.8-.47 2.43a4.9 4.9 0 0 1-1.16 1.77 4.9 4.9 0 0 1-1.77 1.16c-.64.25-1.36.42-2.43.47-1.07.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.07-.05-1.8-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.16 4.9 4.9 0 0 1-1.16-1.77c-.25-.64-.42-1.36-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.07.22-1.8.47-2.43.26-.66.6-1.22 1.16-1.77.55-.56 1.11-.9 1.77-1.16.64-.25 1.36-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm5.34 3.34a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4ZM12 6.86a5.14 5.14 0 1 1 0 10.28 5.14 5.14 0 0 1 0-10.28Zm0 1.8a3.34 3.34 0 1 0 0 6.68 3.34 3.34 0 0 0 0-6.68Z"/></svg>
+            </span>
+            <div>
+              <h3>اینستاگرام</h3>
+              <a href={SITE.instagram} target="_blank" rel="noopener">{SITE.instagramHandle}</a>
+            </div>
+          </li>
+          <li>
+            <span class="contact-icon location" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
+            </span>
+            <div>
+              <h3>آدرس</h3>
+              <p>{SITE.address}</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="quick-links">
+          <h3>صفحات مرتبط</h3>
+          <ul>
+            <li><a href="/real-estate-urmia">خرید و فروش ملک در ارومیه</a></li>
+            <li><a href="/luxury-cars-urmia">خرید و فروش خودروهای لوکس در ارومیه</a></li>
+            <li><a href="/blog">وبلاگ</a></li>
+            <li><a href="/about">درباره ما</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h2>فرم تماس</h2>
+        <p class="form-note">
+          این فرم برای راه‌اندازی سریع ارتباط است. پس از ارسال، پیام شما از طریق ایمیل به ما
+          می‌رسد. برای پاسخ سریع‌تر، تماس تلفنی یا واتساپ توصیه می‌شود.
+        </p>
+
+        <form
+          action={`mailto:info@sale1405.ir`}
+          method="post"
+          enctype="text/plain"
+          class="contact-form"
+        >
+          <div class="form-field">
+            <label for="name">نام و نام خانوادگی</label>
+            <input type="text" id="name" name="name" required placeholder="نام شما" />
+          </div>
+          <div class="form-field">
+            <label for="phone">شماره تماس</label>
+            <input type="tel" id="phone" name="phone" required placeholder="0912..." dir="ltr" />
+          </div>
+          <div class="form-field">
+            <label for="subject">موضوع</label>
+            <select id="subject" name="subject">
+              <option value="real-estate">خرید و فروش ملک در ارومیه</option>
+              <option value="luxury-cars">خرید و فروش خودرو لوکس در ارومیه</option>
+              <option value="investment">مشاوره سرمایه‌گذاری</option>
+              <option value="other">سایر</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="message">پیام شما</label>
+            <textarea id="message" name="message" rows="5" required placeholder="پیام خود را بنویسید..."></textarea>
+          </div>
+          <button type="submit" class="cta">ارسال پیام</button>
+        </form>
+
+        <p class="form-alt">
+          اگر فرم کار نکرد، مستقیماً به <a href={`mailto:info@sale1405.ir`}>info@sale1405.ir</a>
+          ایمیل بزنید یا با <a href={SITE.phoneTel}><Phone /></a> تماس بگیرید.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .contact-section {
+    padding: 3rem 1.5rem;
+  }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+  .contact-info h2,
+  .contact-form-wrap h2 {
+    margin-top: 0;
+  }
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  .contact-list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .contact-icon.phone { background: #0e9f6e; }
+  .contact-icon.whatsapp { background: #25d366; }
+  .contact-icon.telegram { background: #229ed9; }
+  .contact-icon.instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+  .contact-icon.location { background: var(--primary); }
+  .contact-list h3 {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+  }
+  .contact-list a,
+  .contact-list p {
+    margin: 0;
+    color: var(--muted);
+  }
+  .contact-list a:hover {
+    color: var(--primary);
+  }
+  .quick-links {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+  }
+  .quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+  .form-note {
+    color: var(--muted);
+    font-size: 0.92rem;
+    background: var(--surface-alt);
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    border-right: 3px solid var(--primary);
+  }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .form-field label {
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    padding: 0.75rem 0.9rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--surface);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  }
+  .form-field textarea {
+    resize: vertical;
+  }
+  .contact-form .cta {
+    align-self: flex-start;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .form-alt {
+    font-size: 0.9rem;
+    color: var(--soft);
+    margin-top: 0.5rem;
+  }
+  .form-alt a {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  @media (max-width: 860px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+  @media (max-width: 520px) {
+    .quick-links ul {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

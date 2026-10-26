@@ -1,0 +1,81 @@
+---
+import { IMAGES } from '../consts';
+
+interface Props {
+  image: { src: string; alt: string };
+  title: string;
+  lead?: string;
+  tag?: string;
+}
+const { image, title, lead, tag } = Astro.props;
+---
+
+<section class="page-hero" style={`--hero-img: url('${image.src}')`}>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    {tag && <span class="tag">{tag}</span>}
+    <h1>{title}</h1>
+    {lead && <p class="lead">{lead}</p>}
+    <img src={image.src} alt={image.alt} class="hero-img-acc" loading="eager" />
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    padding: 4.5rem 1.5rem 3rem;
+    text-align: center;
+    background-image: linear-gradient(180deg, rgba(15,118,110,0.85), rgba(17,94,89,0.75)), var(--hero-img);
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    overflow: hidden;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(15, 23, 42, 0.55) 100%);
+  }
+  .hero-content {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .hero-content .tag {
+    background: rgba(255,255,255,0.18);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .page-hero h1 {
+    color: #fff;
+    font-size: 2.6rem;
+    margin: 0.5rem 0 1rem;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+  }
+  .page-hero .lead {
+    color: rgba(255,255,255,0.95);
+    font-size: 1.15rem;
+    max-width: 680px;
+    margin: 0 auto;
+    line-height: 1.9;
+  }
+  .hero-img-acc {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @media (max-width: 720px) {
+    .page-hero {
+      padding: 3rem 1.25rem 2.25rem;
+    }
+    .page-hero h1 {
+      font-size: 1.85rem;
+    }
+    .page-hero .lead {
+      font-size: 1rem;
+    }
+  }
+</style>

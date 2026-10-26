@@ -1,0 +1,69 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingIcons from '../components/FloatingIcons.astro';
+import SEOHead from '../components/SEOHead.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../consts';
+
+interface Crumb {
+  name: string;
+  path: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  image?: string;
+  breadcrumbs?: Crumb[];
+  faq?: { question: string; answer: string }[];
+  jsonLd?: object[];
+}
+
+const props = Astro.props;
+---
+
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#0f766e" />
+    <link rel="alternate" hreflang="fa-IR" href={`${SITE.url}${props.path}`} />
+    <SEOHead {...props} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">پرش به محتوا</a>
+    <Header />
+    {props.breadcrumbs && props.breadcrumbs.length > 0 && (
+      <Breadcrumbs items={props.breadcrumbs} />
+    )}
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <FloatingIcons />
+  </body>
+</html>
+
+<style>
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    right: 1rem;
+    background: var(--primary);
+    color: #fff;
+    padding: 0.5rem 0.9rem;
+    border-radius: 6px;
+    z-index: 1000;
+    text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus {
+    top: 0.5rem;
+  }
+</style>
